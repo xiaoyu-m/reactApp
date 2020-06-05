@@ -78,14 +78,6 @@ class Admin extends React.Component {
     // console.log(user);
     this.setState({ user });
   }
-
-  Fancy(props) {
-    return (
-      <div className={'FancyBorder FancyBorder-' + props.color}>
-        {props.children}
-      </div>
-    );
-  }
   render() {
     return (
       <Layout style={{ minHeight: '100vh' }}>
@@ -199,11 +191,6 @@ class Admin extends React.Component {
                           </form>
                         </div>
                       )}
-                    </Card>
-                  </Col>
-                  <Col span={8}>
-                    <Card>
-                      <this.Fancy color="red">Welcome!!!</this.Fancy>
                     </Card>
                   </Col>
                 </Row>

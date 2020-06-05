@@ -8,6 +8,6 @@ module.exports = merge(baseConfig, {
   // 配置服务端目录和端口
   devServer: {
     contentBase: '../dist',
-    port: 8080,
+    port: 80,
   },
 });
