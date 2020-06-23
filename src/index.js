@@ -1,8 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './pages/App.js';
-
-ReactDOM.render(<App />, document.getElementById('root'));
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "@/pages/app";
+ReactDOM.render(<App />, document.getElementById("app"));
 
 /**
  * 1. 第一次初始化渲染显示ReactDom.render()

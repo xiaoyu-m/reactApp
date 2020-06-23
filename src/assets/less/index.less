@@ -1,32 +1,80 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-.site-layout .site-layout-background {
-  background: #fff;
-}
-.logo {
-  padding: 0 10px;
-}
-.logo img {
-  width: 50px;
-  margin: 5px;
-}
-.logoTitle {
-  display: inline-block;
-  min-width: 100px;
-  position: relative;
-  top: 10px;
-  font-size: 30px;
-  transition: 0.3s;
-}
-.fade {
-  display: inline-block;
-  width: 0;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-.header {
-  padding: 0;
+@fiexd-width: 160px;
+@fiexd-width-s: 60px;
+@fiexd-height: 60px;
+@clean-width: 0px;
+@media screen {
+  * {
+    margin: 0;
+    padding: 0;
+    body {
+      .main {
+        aside {
+          width: @fiexd-width;
+          height: 100vh;
+          background: #33e;
+          position: fixed;
+          transition: 0.2s;
+        }
+
+        section {
+          header {
+            transition: 0.2s;
+            position: fixed;
+            top: 0;
+            z-index: 9;
+            width: 100%;
+            height: @fiexd-height;
+            left: @fiexd-width;
+            background: #f33;
+          }
+
+          main {
+            transition: 0.2s;
+            padding: @fiexd-height 0 0 @fiexd-width;
+          }
+
+          footer {
+            transition: 0.2s;
+            padding-left: @fiexd-width;
+          }
+        }
+
+        &.hideNav {
+          aside {
+            width: @clean-width;
+          }
+          section {
+            header {
+              left: @clean-width;
+            }
+            main {
+              padding: @fiexd-height 0 0 @clean-width;
+            }
+            footer {
+              padding-left: @clean-width;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (min-width: 1500px) {
+  }
+  @media (max-width: 1500px) and (min-width: 1190px) {
+  }
+  @media (max-width: 1190px) and (min-width: 768px) {
+  }
+  @media (max-width: 768px) {
+    section {
+      header {
+        left: @clean-width;
+      }
+      main {
+        padding: @fiexd-height 0 0 @clean-width;
+      }
+      footer {
+        padding-left: @clean-width;
+      }
+    }
+  }
 }
