@@ -1,112 +1,83 @@
 import axios from "axios";
-import qs from "qs";
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import { message, Spin } from "antd";
+const Axios = axios.create({
+  baseURL: "https://api.itooi.cn", // 设置请求的base url
+  timeout: 20000, // 设置超时时长
+});
 
-axios.defaults.timeout = 5000;
-axios.defaults.baseURL = "http://127.0.0.1:81/";
-// axios.defaults.baseURL = "https://api.molisedianjing.com";
+// 设置post请求头
+Axios.defaults.headers.post["Content-Type"] =
+  "application/x-www-form-urlencoded;charset=UTF-8";
 
-//http request 拦截器
-axios.interceptors.request.use(
+// 当前正在请求的数量
+let requestCount = 0;
+
+// 显示loading
+function showLoading() {
+  if (requestCount === 0) {
+    var dom = document.createElement("div");
+    dom.setAttribute("id", "loading");
+    document.body.appendChild(dom);
+    ReactDOM.render(<Spin tip="加载中..." size="large" />, dom);
+  }
+  requestCount++;
+}
+
+// 隐藏loading
+function hideLoading() {
+  requestCount--;
+  if (requestCount === 0) {
+    document.body.removeChild(document.getElementById("loading"));
+  }
+}
+
+// 请求前拦截
+Axios.interceptors.request.use(
   (config) => {
+    // requestCount为0，才创建loading, 避免重复创建
+    if (config.headers.isLoading !== false) {
+      showLoading();
+    }
+
     if (config.method === "post") {
       // const token = getCookie('名称');注意使用的时候需要引入cookie方法，推荐js-cookie
-      // config.data = qs.stringify(config.data);
+      config.data = qs.stringify(config.data);
     }
     return config;
   },
-  (error) => {
+  (err) => {
+    // 判断当前请求是否设置了不显示Loading
+    if (err.config.headers.isLoading !== false) {
+      hideLoading();
+    }
     return Promise.reject(err);
   }
 );
 
-//http response 拦截器
-axios.interceptors.response.use(
-  (response) => {
-    return response.data;
+// 返回后拦截
+Axios.interceptors.response.use(
+  (res) => {
+    // 判断当前请求是否设置了不显示Loading
+    if (res.config.headers.isLoading !== false) {
+      hideLoading();
+    }
+    return res.data;
   },
-  (error) => {
-    return Promise.reject(error);
+  (err) => {
+    if (err.config.headers.isLoading !== false) {
+      hideLoading();
+    }
+    if (err.message === "Network Error") {
+      message.warning("网络连接异常！");
+    }
+    if (err.code === "ECONNABORTED") {
+      message.warning("请求超时，请重试");
+    }
+    return Promise.reject(err);
   }
 );
-
-/**
- * 封装get方法
- * @param url
- * @param data
- * @returns {Promise}
- */
-
-export function fetch(url, params = {}) {
-  return new Promise((resolve, reject) => {
-    axios
-      .get(url, {
-        params: params,
-      })
-      .then((response) => {
-        resolve(response.data);
-      })
-      .catch((err) => {
-        reject(err);
-      });
-  });
-}
-
-/**
- * 封装post请求
- * @param url
- * @param data
- * @returns {Promise}
- */
-
-export function post(url, data = {}) {
-  return new Promise((resolve, reject) => {
-    axios.post(url, data).then(
-      (response) => {
-        resolve(response.data);
-      },
-      (err) => {
-        reject(err);
-      }
-    );
-  });
-}
-
-/**
- * 封装patch请求
- * @param url
- * @param data
- * @returns {Promise}
- */
-
-export function patch(url, data = {}) {
-  return new Promise((resolve, reject) => {
-    axios.patch(url, data).then(
-      (response) => {
-        resolve(response.data);
-      },
-      (err) => {
-        reject(err);
-      }
-    );
-  });
-}
-
-/**
- * 封装put请求
- * @param url
- * @param data
- * @returns {Promise}
- */
-
-export function put(url, data = {}) {
-  return new Promise((resolve, reject) => {
-    axios.put(url, data).then(
-      (response) => {
-        resolve(response.data);
-      },
-      (err) => {
-        reject(err);
-      }
-    );
-  });
-}
+// 把组件引入，并定义成原型属性方便使用
+React.$axios = Axios;
+export default Axios;

@@ -1,14 +1,12 @@
 import React from "react";
-import axios from "axios";
-import PropsType from "props-type";
-
 import "../assets/less/index.less";
+
 import SignUp from "@/pages/sign-up/sign-up";
 import Header from "@/components/layout/header/header";
 import Sider from "@/components/layout/sider/sider";
 import Footer from "@/components/layout/footer/footer";
-import CommentAdd from "@/components/comment-add/comment-add";
-import CommentList from "@/components/comment-list/comment-list";
+import Search from "@/components/github_search/search";
+import Carousel from "@/components/carousel/carousel";
 
 class Admin extends React.Component {
   // 给组件类添加属性
@@ -61,11 +59,10 @@ class Admin extends React.Component {
           <Header changeNavState={this.changeNavState} />
           <main>
             {isAdmin && <h1>我是管理员</h1>}
-            {/*<CommentAdd addComment={this.addComment} />*/}
-            {/*<CommentList*/}
-            {/*  comments={this.state.comments}*/}
-            {/*  delComment={this.delComment}*/}
-            {/*/>*/}
+            {/*<Search />*/}
+            <ul>
+              <Carousel />
+            </ul>
           </main>
           <Footer />
         </section>
