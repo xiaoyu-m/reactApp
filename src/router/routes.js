@@ -3,7 +3,7 @@ import Admin from "@/pages/admin/admin";
 export default [
   {
     path: "/",
-    redirect: "/index",
+    component: Index,
   },
   {
     path: "/index",
