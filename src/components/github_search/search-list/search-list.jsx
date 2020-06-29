@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "props-type";
+import PropTypes from "prop-types";
 class SearchList extends Component {
   static propTypes = {
     songs: PropTypes.array,

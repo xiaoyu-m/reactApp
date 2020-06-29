@@ -181,13 +181,47 @@ Hello组件接收 let {username} = this.props
 
 #### 12.状态提升
 
+```
+
+```
+
 #### 13.组合&继承
+
+```
+在子组件中添加props children以使用组合组件
+子组件Compose
+<div className="child">
+  <h1>我是</h1>
+  {this.props.children}
+</div>
+
+组合组件：
+<Compose>
+  组合组件
+</Compose>
+
+```
 
 #### 14.React哲学
 
-### 五 
+### 五  react网络请求
 
-### 六 
+#### 1.fetch
+
+#### 2.axios
+
+### 六  react-router
+
+#### 1.安装 npm i react-router-dom --save
+
+#### 2.作用 react是单页面应用(SPA)，切换不同的显示视图
+
+```
+HashRotuer 锚点链接(#) 
+BrowwserRotuer h5新特性/history.push 如果上线后，需要后台做重定向处理404bug
+```
+
+
 
 ### 七 
 
@@ -226,11 +260,11 @@ Hello组件接收 let {username} = this.props
 
 ##### 组件：Comment-item 元素：单条留言数据，可删除
 
-npm i --save props-type
+npm i --save prop-types
 
 ```
 props 使用
-1.引用props  import PropTypes from 'props-type';
+1.引用props  import PropTypes from 'prop-types';
 2.使用props  propTypes = {
 	propsName: PropTypes.Object
 }

@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import qs from "qs";
 import { message, Spin } from "antd";
 const Axios = axios.create({
-  baseURL: "https://api.itooi.cn", // 设置请求的base url
-  timeout: 20000, // 设置超时时长
+  baseURL: "http://127.0.0.1:83", // 设置请求的base url
+  // baseURL: "https://api.itooi.cn", // 设置请求的base url
+  // timeout: 20000, // 设置超时时长
 });
 
 // 设置post请求头
@@ -66,6 +68,7 @@ Axios.interceptors.response.use(
     return res.data;
   },
   (err) => {
+    console.log(err);
     if (err.config.headers.isLoading !== false) {
       hideLoading();
     }
@@ -80,4 +83,6 @@ Axios.interceptors.response.use(
 );
 // 把组件引入，并定义成原型属性方便使用
 React.$axios = Axios;
-export default Axios;
+export default {
+  msg: "$axios 注入成功",
+};

@@ -8,7 +8,6 @@ class Search extends Component {
     initView: true,
     loading: false,
     songs: null,
-
     errorMsg: null,
   };
   searchInputChange = (e) => {

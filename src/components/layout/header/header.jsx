@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import PropTypes from "props-type";
+import PropTypes from "prop-types";
 import { MenuFoldOutlined } from "@ant-design/icons";
+import Nav from "@/components/Nav/Nav";
 import "./header.less";
 
 class Header extends Component {
@@ -19,9 +20,8 @@ class Header extends Component {
   render() {
     return (
       <header>
-        <h1>
-          <MenuFoldOutlined onClick={this.changeNavState} /> header
-        </h1>
+        <MenuFoldOutlined onClick={this.changeNavState} />
+        <Nav />
       </header>
     );
   }

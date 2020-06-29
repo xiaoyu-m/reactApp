@@ -1,5 +1,6 @@
 import React from "react";
 import "../assets/less/index.less";
+import Router from "@/router/router";
 
 import SignUp from "@/pages/sign-up/sign-up";
 import Header from "@/components/layout/header/header";
@@ -7,6 +8,7 @@ import Sider from "@/components/layout/sider/sider";
 import Footer from "@/components/layout/footer/footer";
 import Search from "@/components/github_search/search";
 import Carousel from "@/components/carousel/carousel";
+import Fetch from "@/demo/fetch/fetch";
 
 class Admin extends React.Component {
   // 给组件类添加属性
@@ -14,7 +16,7 @@ class Admin extends React.Component {
   // addComment: PropsType.func.isRequired,
   // };
   state = {
-    navState: true,
+    navState: false,
     date: new Date(),
     isAdmin: true,
     comments: [{ username: "小于", content: "你好美哦" }],
@@ -57,13 +59,10 @@ class Admin extends React.Component {
         <Sider />
         <section>
           <Header changeNavState={this.changeNavState} />
-          <main>
-            {isAdmin && <h1>我是管理员</h1>}
-            {/*<Search />*/}
-            <ul>
-              <Carousel />
-            </ul>
-          </main>
+          <Router />
+          {/*{isAdmin && <h1>我是管理员</h1>}*/}
+          {/*<Fetch />*/}
+          {/*<Carousel />*/}
           <Footer />
         </section>
       </div>

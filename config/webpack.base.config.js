@@ -25,8 +25,13 @@ module.exports = {
       },
       {
         test: /\.js[x]?$/,
-        use: "babel-loader",
         exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
+        },
       },
       { test: /\.(jpg|png|jpeg|gif)$/, loader: "url-loader" },
       {

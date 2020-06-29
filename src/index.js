@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "babel-polyfill"; // ie兼容
+import "@/utils/http";
+import "@/utils/fetch";
 import App from "@/pages/app";
 import StateDemo from "@/demo/setStateDemo";
-import "@/utils/http";
 
-// ReactDOM.render(<App />, document.getElementById("app"));
-ReactDOM.render(<StateDemo />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById("app"));
 
 /**
  * 1. 第一次初始化渲染显示ReactDom.render()

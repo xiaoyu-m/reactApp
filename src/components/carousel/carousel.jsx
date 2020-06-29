@@ -1,4 +1,4 @@
-import React, { $axios, Component, Fragment } from "react";
+import React, { createRef, $axios, Component, Fragment } from "react";
 import "./carousel.less";
 
 import Antd from "antd";
@@ -6,11 +6,12 @@ class Carousel extends Component {
   state = {
     list: [],
   };
-  componentWillMount() {
+  componentDidMount() {
     $axios.get("tencent/banner").then((res) => {
       this.setState({ list: res.data });
     });
   }
+
   render() {
     let { list } = this.state;
     return (
