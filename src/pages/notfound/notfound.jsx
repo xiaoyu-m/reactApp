@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-class Main extends Component {
-  componentDidMount() {}
+class Notfound extends Component {
   render() {
     return (
       <div>
-        <h1>首页</h1>
+        <h1>404页面</h1>
       </div>
     );
   }
 }
 
-export default Main;
+export default Notfound;

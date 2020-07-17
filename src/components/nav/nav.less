@@ -1,0 +1,39 @@
+@default-link: #aaa;
+@active-link: #fff;
+@media screen {
+  .nav-box {
+    li {
+      display: block;
+      list-style: none;
+      a {
+        display: block;
+        padding: 4px 8px;
+        font-weight: bold;
+        color: @default-link;
+        &:hover {
+          color: @active-link;
+        }
+        &.active {
+          color: @active-link;
+        }
+      }
+      &.subNav {
+        b {
+          padding: 4px 8px;
+          display: block;
+          cursor: pointer;
+          vertical-align: middle;
+          color: @default-link;
+          &::before {
+            content: "";
+            width: 2px;
+            height: 12px;
+            margin: 0 3px 0 1px;
+            background: @default-link;
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+}

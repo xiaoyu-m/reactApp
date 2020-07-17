@@ -1,4 +1,3 @@
-import {getHomeInfo} from './home';
+import { getHomeInfo } from "./music";
 
-export const homeThunk=store=>store.dispatch(getHomeInfo())
-
+export const homeThunk = (store) => store.dispatch(getHomeInfo());

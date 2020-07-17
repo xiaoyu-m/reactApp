@@ -1,12 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "babel-polyfill"; // ie兼容
-import "@/utils/http";
-import "@/utils/fetch";
+// import "@/utils/http";
+// import "@/utils/fetch";
 import App from "@/pages/app";
-import StateDemo from "@/demo/setStateDemo";
+// import StateDemo from "@/demo/setStateDemo";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
 
-ReactDOM.render(<App />, document.getElementById("app"));
+import * as rootReducer from "@/store/reducers";
+const store = createStore(rootReducer);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("app")
+);
 
 /**
  * 1. 第一次初始化渲染显示ReactDom.render()

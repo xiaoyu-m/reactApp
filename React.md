@@ -1,11 +1,11 @@
-## React 
+## 
 
 ### #前期知识准备：
 
 ```
 1.JavaScript
 2.HTML+CSS
-3.构建工具Webpack
+3.构建工具Webpack 
 4.安装node
 5.npm或cnpm命令
 6.官方文档 https://react.docschina.org/docs/getting-started.html
@@ -210,20 +210,97 @@ Hello组件接收 let {username} = this.props
 
 #### 2.axios
 
-### 六  react-router
+### 六  react-router-dom
 
-#### 1.安装 npm i react-router-dom --save
-
-#### 2.作用 react是单页面应用(SPA)，切换不同的显示视图
+#### 1.安装 
 
 ```
-HashRotuer 锚点链接(#) 
-BrowwserRotuer h5新特性/history.push 如果上线后，需要后台做重定向处理404bug
+npm i react-router-dom --save
+```
+
+#### 2.作用 
+
+```
+1.react是单页面应用(SPA)，切换不同的显示视图
+2.HashRotuer 锚点链接(#)  推荐使用
+3.BrowwserRotuer h5新特性/history.push 如果上线后，需要后台做重定向处理404bug
+4.this.props.history.push = '/' 或者this.props.history.replace = '/',前者跳转返回可返回跳转页面，replace则相反	
+ 
+```
+
+#### 3.withRouter
+
+```
+1.是react高阶组件，大部分组件不被路由所管理，通过这个组件进额外的组件管理
+2.使用方法： 
+	1)引入 import { withRouter } from "react-router-dom";
+	2)使用 export default withRouter(Component);
+```
+
+#### 4.Prompt
+
+```
+1.react高阶组件，当输入框不为空提示跳转页面，确定则跳转，取消则取消跳转页面
+2.使用方法：
+	1)引入 import {Prompt} from "react-router-dom";
+	2)使用 <Prompt when={!!this.state.name} message={"确认要离开吗？"} />
+```
+
+### 七  Redux 
+
+![image-20200714225309203](C:\Users\16970\AppData\Roaming\Typora\typora-user-images\image-20200714225309203.png)
+
+#### #基础知识点
+
+```
+1.react中状态数据: state
+2.父子组件传递数据: props\ 回传事件
+3.兄弟间组件数据：共同的子元素或者共同的父元素（大量的组件需要同一条数据）
+4.当你不知道什么时候需要使用redux的时候，就不用redux，遇到解决不了的问题的时候自然会想起使用redux
+5.redux是js的状态管理，react-redux是针对react封装的状态管理
+```
+
+#### 1.安装
+
+```
+npm install --save--dev redux
+npm install --save--dev react-redux
+```
+
+#### 2.使用 redux
+
+```
+1.创建仓库文件 定义store方法并使用switch返回state
+2.创建仓库
+	1)引入redux中的creactStore方法
+	2)引入store容器
+	3)创建仓库  const store = createStore(reducer); 
+	4)使用store.dispatch改变store数据
+    5)使用store.getState获取state数据
+    6)使用store.subscribe(render)热更新视图
+```
+
+#### 3.使用react-redux
+
+```
+1.创建仓库文件 定义store方法并使用switch返回state
+2.创建actions 返回操作store的方法
+
+```
+
+#### 4.redux三大原则
+
+```
+1.单一数据源
+	整个state只存于一颗Object tree中， 并且这个Object tree只存于唯一的store中
+2.State 是只读的
+	改变state的方法只能是触发action， action是描述已发生事件的普通对象
+3.使用纯函数来执行修改
+	编写reducers改变 state tree。
+
 ```
 
 
-
-### 七 
 
 ### 八 
 

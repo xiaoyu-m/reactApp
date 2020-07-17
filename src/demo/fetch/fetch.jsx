@@ -11,7 +11,7 @@ class Fetch extends Component {
         console.log(data);
       });
     // $fetch
-    //   .get("/user/test", { a: 1 })
+    //   .get("/music/test", { a: 1 })
     //   .then((res) => res.json())
     //   .then((data) => {
     //     console.log(data);

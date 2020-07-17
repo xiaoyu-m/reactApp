@@ -11,7 +11,7 @@
         aside {
           width: @fiexd-width;
           height: 100vh;
-          background: #33e;
+          background: rgba(249, 83, 85, 0.85);
           position: fixed;
           transition: 0.2s;
         }
@@ -25,7 +25,7 @@
             width: 100%;
             height: @fiexd-height;
             left: @fiexd-width;
-            background: #f33;
+            background: rgba(27, 136, 238, 0.85);
           }
 
           .content {
@@ -38,10 +38,12 @@
             padding-left: @fiexd-width;
           }
         }
-
         &.hideNav {
           aside {
             width: @clean-width;
+            & > div {
+              display: none;
+            }
           }
           section {
             header {
