@@ -6,8 +6,5 @@ module.exports = merge(baseConfig, {
   mode: "development",
   devtool: "inline-source-map",
   // 配置服务端目录和端口
-  devServer: {
-    contentBase: "../dist",
-    port: 80,
-  },
+  devServer: { disableHostCheck: true, contentBase: "../dist", port: 80 },
 });
