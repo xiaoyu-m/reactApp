@@ -32,6 +32,11 @@ class Nav extends Component {
                 )
               )
             )}
+            <li>
+              <NavLink exact to="/music">
+                音乐demo
+              </NavLink>
+            </li>
           </ul>
         </Router>
       </div>

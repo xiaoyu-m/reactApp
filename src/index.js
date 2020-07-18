@@ -8,7 +8,7 @@ import App from "@/pages/app";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 
-import * as rootReducer from "@/store/reducers";
+import rootReducer from "@/store/reducers";
 const store = createStore(rootReducer);
 
 ReactDOM.render(

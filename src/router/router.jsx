@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { HashRouter as Routers, Route, Switch, Link } from "react-router-dom";
 import routes from "./routes";
-import Article from "@/pages/article/article";
-import Student from "@/pages/admin/student";
+import Music from "@/pages/demo/music";
 
 class Router extends Component {
   render() {
@@ -10,10 +9,11 @@ class Router extends Component {
       <div className="content">
         <Routers>
           <Switch>
+            <Route path="/music" component={Music} />
             {routes.map((ritem, rindex) => {
               if (ritem.children) {
                 return (
-                  <Route path={ritem.path}>
+                  <Route path={ritem.path} key={rindex}>
                     {ritem.children.map((citem, cindex) => {
                       return (
                         <Route

@@ -2,7 +2,7 @@ import Main from "@/pages/main/main";
 
 import Admin from "@/pages/admin/admin";
 import Student from "@/pages/admin/student";
-import User from "@/pages/admin/music";
+import User from "@/pages/admin/user";
 import ArticleAdd from "@/pages/article/article-add";
 import Article from "@/pages/article/article";
 import ArticleWx from "@/pages/article/article-wx";
@@ -29,7 +29,7 @@ export default [
         component: Student,
       },
       {
-        path: "/music",
+        path: "/user",
         name: "用户管理",
         component: User,
       },
