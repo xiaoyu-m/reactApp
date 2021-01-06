@@ -11,7 +11,7 @@
     "@ant-design/aliyun-theme": "0.0.4",
     "@ant-design/icons": "^4.2.1",
     "antd": "^4.3.5",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "formik": "^2.1.4",
     "npm": "^6.14.5",
     "qs": "^6.9.4",
